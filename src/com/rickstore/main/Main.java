@@ -25,11 +25,11 @@ public class Main {
 
     private static float priceFiltermin = Float.MIN_VALUE;
     private static float priceFiltermax = Float.MAX_VALUE;
-    private static Metal metalFilter = Metal.NONE;
+    private static Metal metalFilter = Metal.Nenhum;
     private static TradeMark tradeMarkFilter = TradeMark.Nenhum;
-    private static Type typeFilter = Type.NONE;
+    private static Type typeFilter = Type.Nenhum;
     private static Wood woodFilter = Wood.Nenhum;
-    private static Family familiaFilter = Family.NONE;
+    private static Family familiaFilter = Family.Nenhum;
 
     public static void main(String[] args) {
         InstrumentsGenerator.getInstrumentsToGenerate();
@@ -84,11 +84,11 @@ public class Main {
             case "limpa":
                 priceFiltermin = Float.MIN_VALUE;
                 priceFiltermax = Float.MAX_VALUE;
-                metalFilter = Metal.NONE;
+                metalFilter = Metal.Nenhum;
                 tradeMarkFilter = TradeMark.Nenhum;
-                typeFilter = Type.NONE;
+                typeFilter = Type.Nenhum;
                 woodFilter = Wood.Nenhum;
-                familiaFilter = Family.NONE;
+                familiaFilter = Family.Nenhum;
                 break;
             default:
                 System.out.println("Comando '"+ input +"' desconhecido");
@@ -100,11 +100,11 @@ public class Main {
 
         if (priceFiltermin == Float.MIN_VALUE &&
         priceFiltermax == Float.MAX_VALUE &&
-        metalFilter == Metal.NONE &&
+        metalFilter == Metal.Nenhum &&
         tradeMarkFilter == TradeMark.Nenhum &&
-        typeFilter == Type.NONE &&
+        typeFilter == Type.Nenhum &&
         woodFilter == Wood.Nenhum &&
-        familiaFilter == Family.NONE){
+        familiaFilter == Family.Nenhum){
             actualInstruments.addAll(Inventory.allInstruments);
             System.out.println("Há " + ConsoleColors.CYAN + actualInstruments.size() + ConsoleColors.RESET + " instrumentos disponíveis");
             showActIns();
@@ -115,7 +115,7 @@ public class Main {
             int score = 0;
 
             // Type search
-            if(typeFilter.equals(Type.NONE)){
+            if(typeFilter.equals(Type.Nenhum)){
                 score++;
             } else if(in instanceof PercussionInstrument){
                 if(in.getInstrumentType().equals(typeFilter))
@@ -131,7 +131,7 @@ public class Main {
             }
 
             // Family search
-            if (familiaFilter.equals(Family.NONE) || in.matchFamily(familiaFilter)){ score++; }
+            if (familiaFilter.equals(Family.Nenhum) || in.matchFamily(familiaFilter)){ score++; }
 
             // Wood and Metal search
             if(in instanceof WindInstrument){
@@ -139,11 +139,11 @@ public class Main {
                     score++;
                 }
             } else if(in instanceof StringInstrument){
-                if((((StringInstrument) in).matchWood(woodFilter) || woodFilter.equals(Wood.Nenhum)) && metalFilter.equals(Metal.NONE)){
+                if((((StringInstrument) in).matchWood(woodFilter) || woodFilter.equals(Wood.Nenhum)) && metalFilter.equals(Metal.Nenhum)){
                     score++;
                 }
             } else if(in instanceof PercussionInstrument){
-                if((((PercussionInstrument) in).matchParts(woodFilter, metalFilter) && metalFilter.equals(Metal.NONE))){
+                if((((PercussionInstrument) in).matchParts(woodFilter, metalFilter) && metalFilter.equals(Metal.Nenhum))){
                     score++;
                 }
             }
@@ -194,7 +194,7 @@ public class Main {
         int helper = 0;
         System.out.println(ConsoleColors.BLUE + "Mostrando de 5 em 5 instrumentos" + ConsoleColors.RESET);
         System.out.println("========================");
-        
+
         for (Instrument ai : actualInstruments) {
             if (helper == 5) {
                 helper = 0;

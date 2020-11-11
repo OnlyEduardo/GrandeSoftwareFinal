@@ -5,22 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 public enum Type {
-    NONE,
+    Nenhum,
     Acoustic,
     Electric
 
     ;
-
-    @Override
-    public String toString() {
-        switch (this){
-            case Acoustic: return "Acústico";
-            case Electric: return "Elétrico";
-            case NONE: return "Nenhum";
-        }
-
-        return super.toString();
-    }
 
     private static final List<Type> VALUES = Arrays.asList(Acoustic,
             Electric);

@@ -12,7 +12,7 @@ public class StringInstrument extends Instrument {
     protected final int numStrings;
 
     public StringInstrument(long serial, float price, TradeMark tradeMark, Type instrumentType, Wood backWood, Wood topWood, int numStrings) {
-        super(serial, price, tradeMark, Family.String, instrumentType);
+        super(serial, price, tradeMark, Family.Cordas, instrumentType);
         this.backWood = backWood;
         this.topWood = topWood;
         this.numStrings = numStrings;

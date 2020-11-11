@@ -9,7 +9,7 @@ public class WindInstrument extends Instrument {
     protected final int numRoles;
 
     public WindInstrument(long serial, float price, TradeMark tradeMark, Type instrumentType, Wood woodPart, Metal metalPart, int numRoles) {
-        super(serial, price, tradeMark, Family.Wind, instrumentType);
+        super(serial, price, tradeMark, Family.Sopro, instrumentType);
         this.woodPart = woodPart;
         this.metalPart = metalPart;
         this.numRoles = numRoles;
@@ -30,7 +30,7 @@ public class WindInstrument extends Instrument {
     public boolean matchParts(Wood wPart, Metal mPart){
         if(woodPart.equals(Wood.Nenhum)){
             return metalPart.equals(mPart);
-        } else if(metalPart.equals(Metal.NONE)){
+        } else if(metalPart.equals(Metal.Nenhum)){
             return  woodPart.equals(wPart);
         }
 

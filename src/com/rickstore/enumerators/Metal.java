@@ -5,29 +5,17 @@ import java.util.List;
 import java.util.Random;
 
 public enum Metal {
-    NONE,
-    Brass,
+    Nenhum,
+    Latao,
     Bronze,
-    Silver,
-    Gold,
+    Prata,
+    Ouro,
     ;
 
-    @Override
-    public String toString() {
-        switch (this){
-            case Brass: return "Latão";
-            case Silver: return "Prata";
-            case Gold: return "Ouro";
-            case NONE: return "Nenhum";
-        }
-
-        return super.toString();
-    }
-
-    private static final List<Metal> VALUES = Arrays.asList(Brass,
+    private static final List<Metal> VALUES = Arrays.asList(Latao,
             Bronze,
-            Silver,
-            Gold);
+            Prata,
+            Ouro);
     private static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
 

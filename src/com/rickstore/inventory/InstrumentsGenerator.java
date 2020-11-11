@@ -97,7 +97,7 @@ public class InstrumentsGenerator {
                     }
                     else {
                         instrumentsList.add(new Flute(serial, price, TradeMark.getRandom(),
-                                Type.getRandom(), Wood.getRandom(), Metal.NONE, 6));
+                                Type.getRandom(), Wood.getRandom(), Metal.Nenhum, 6));
                     }
                     break;
                 case "Guitar":

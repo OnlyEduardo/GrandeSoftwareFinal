@@ -8,7 +8,7 @@ public class PercussionInstrument extends Instrument {
     protected final Metal bodyMetal;
 
     public PercussionInstrument(long serial, float price, TradeMark tradeMark, Type instrumentType, Wood bodyWood, Metal bodyMetal) {
-        super(serial, price, tradeMark, Family.Percurssion, instrumentType);
+        super(serial, price, tradeMark, Family.Percurssao, instrumentType);
         this.bodyWood = bodyWood;
         this.bodyMetal = bodyMetal;
     }
@@ -24,7 +24,7 @@ public class PercussionInstrument extends Instrument {
     public boolean matchParts(Wood wood, Metal metal){
         if(wood.equals(Wood.Nenhum))
             wood = getBodyWood();
-        if(metal.equals(Metal.NONE))
+        if(metal.equals(Metal.Nenhum))
             metal = getBodyMetal();
 
         return getBodyWood().equals(wood) && getBodyMetal().equals(metal);
