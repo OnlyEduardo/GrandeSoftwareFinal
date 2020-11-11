@@ -41,9 +41,9 @@ public class InstrumentsGenerator {
         System.out.println("Quantos instrumentos você quer gerar para teste ?");
 
         System.out.println("Recomendado mínimo de " +
-                ConsoleColors.RED_BACKGROUND + "10" + ConsoleColors.RESET +
+                ConsoleColors.RED + "10" + ConsoleColors.RESET +
                 " e no máximo "+
-                ConsoleColors.RED_BACKGROUND + "100000" + ConsoleColors.RESET +
+                ConsoleColors.RED + "100000" + ConsoleColors.RESET +
                 ", porém qualquer valor positivo é válido.");
 
         int valueToGen = 0;

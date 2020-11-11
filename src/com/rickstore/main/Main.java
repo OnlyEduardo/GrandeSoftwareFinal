@@ -160,7 +160,7 @@ public class Main {
         if(actualInstruments.size() == 0)
             System.out.println("Infelizmente não há instrumentos compátiveis com esses filtros :(");
         else {
-            System.out.println("Há " + ConsoleColors.CYAN + actualInstruments.size() + ConsoleColors.RESET + "instrumentos disponíveis");
+            System.out.println("Há " + ConsoleColors.CYAN + actualInstruments.size() + ConsoleColors.RESET + " instrumentos disponíveis para esses filtro");
             showActIns();
         }
     }
@@ -196,12 +196,17 @@ public class Main {
         System.out.println("========================");
 
         for (Instrument ai : actualInstruments) {
+
             if (helper == 5) {
-                helper = 0;
                 scan = new Scanner(System.in);
-                System.out.println("Digite qualquer tecla para mostrar mais 5");
-                scan.nextLine();
+                System.out.println("Digite qualquer tecla para mostrar mais 5.");
+                System.out.println("aperte " + ConsoleColors.YELLOW + "s" + ConsoleColors.RESET + " para terminar de mostrar tudo.");
+                String input = scan.nextLine();
+
+                if(!input.equals("s"))
+                    helper = 0;
             }
+
             System.out.println(ai);
             System.out.println("========================");
             helper++;
