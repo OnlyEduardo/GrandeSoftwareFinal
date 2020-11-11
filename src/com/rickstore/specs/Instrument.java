@@ -1,5 +1,6 @@
 package com.rickstore.specs;
 
+import com.rickstore.enumerators.Family;
 import com.rickstore.enumerators.TradeMark;
 import com.rickstore.enumerators.Type;
 
@@ -13,10 +14,10 @@ public class Instrument {
     protected final long serial;
     protected final float price;
     protected final TradeMark tradeMark;
-    protected final String family;
+    protected final Family family;
     protected final Type instrumentType;
 
-    public Instrument(long serial, float price, TradeMark tradeMark, String family, Type instrumentType) {
+    public Instrument(long serial, float price, TradeMark tradeMark, Family family, Type instrumentType) {
         this.serial = serial;
         this.price = price;
         this.tradeMark = tradeMark;
@@ -36,7 +37,7 @@ public class Instrument {
         return tradeMark;
     }
 
-    public String getFamily() {
+    public Family getFamily() {
         return family;
     }
 
@@ -48,8 +49,8 @@ public class Instrument {
         return price >= minimum && price <= maximum;
     }
 
-    public boolean matchFamily(String family){
-        return this.family.equals(family);
+    public boolean matchFamily(Family family){
+        return this.family == family;
     }
 
     public boolean matchTradeMark(TradeMark tradeMark){

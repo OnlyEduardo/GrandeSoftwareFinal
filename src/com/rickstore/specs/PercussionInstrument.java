@@ -1,9 +1,6 @@
 package com.rickstore.specs;
 
-import com.rickstore.enumerators.Metal;
-import com.rickstore.enumerators.TradeMark;
-import com.rickstore.enumerators.Type;
-import com.rickstore.enumerators.Wood;
+import com.rickstore.enumerators.*;
 
 public class PercussionInstrument extends Instrument {
 
@@ -11,7 +8,7 @@ public class PercussionInstrument extends Instrument {
     protected final Metal bodyMetal;
 
     public PercussionInstrument(long serial, float price, TradeMark tradeMark, Type instrumentType, Wood bodyWood, Metal bodyMetal) {
-        super(serial, price, tradeMark, "Percussão", instrumentType);
+        super(serial, price, tradeMark, Family.Percurssion, instrumentType);
         this.bodyWood = bodyWood;
         this.bodyMetal = bodyMetal;
     }
@@ -22,5 +19,14 @@ public class PercussionInstrument extends Instrument {
 
     public Metal getBodyMetal() {
         return bodyMetal;
+    }
+
+    public boolean matchParts(Wood wood, Metal metal){
+        if(wood.equals(Wood.Nenhum))
+            wood = getBodyWood();
+        if(metal.equals(Metal.NONE))
+            metal = getBodyMetal();
+
+        return getBodyWood().equals(wood) && getBodyMetal().equals(metal);
     }
 }

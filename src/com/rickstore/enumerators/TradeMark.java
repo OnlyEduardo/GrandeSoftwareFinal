@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public enum TradeMark {
-    NONE,
+    Nenhum,
     Takamine,
     Stratocaster,
     Fender,

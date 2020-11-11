@@ -18,6 +18,7 @@ public enum Metal {
             case Brass: return "Latão";
             case Silver: return "Prata";
             case Gold: return "Ouro";
+            case NONE: return "Nenhum";
         }
 
         return super.toString();

@@ -16,6 +16,7 @@ public enum Type {
         switch (this){
             case Acoustic: return "Acústico";
             case Electric: return "Elétrico";
+            case NONE: return "Nenhum";
         }
 
         return super.toString();

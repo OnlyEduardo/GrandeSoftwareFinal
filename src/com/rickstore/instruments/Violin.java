@@ -16,8 +16,8 @@ public class Violin extends StringInstrument {
         String iType = instrumentType.equals(Type.Electric) ? "elétrico" : "";
 
         return String.format("Violino %s %s." +
-                        "\nBackwood: %s" +
+                "\nBackwood: %s" +
                 "\nTopwood: %s" +
-                "\nPreço: %s", iType, tradeMark, backWood, topWood, formatter.format(price));
+                "\nPreço: R$%s", iType, tradeMark, backWood, topWood, formatter.format(price));
     }
 }

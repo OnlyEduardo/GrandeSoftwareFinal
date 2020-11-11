@@ -14,10 +14,10 @@ public class Flute extends WindInstrument {
 
     @Override
     public String toString() {
-        String material = (woodPart.equals(Wood.NONE) ? metalPart.toString() : woodPart.toString());
+        String material = (woodPart.equals(Wood.Nenhum) ? metalPart.toString() : woodPart.toString());
 
-        return String.format(" Flauta %s, %d entradas." +
+        return String.format("Flauta %s, %d entradas." +
                 "\nMaterial: %s" +
-                "\nPreço: %s", tradeMark, numRoles, material, formatter.format(price));
+                "\nPreço: R$%s", tradeMark, numRoles, material, formatter.format(price));
     }
 }

@@ -1,5 +1,6 @@
 package com.rickstore.specs;;
 
+import com.rickstore.enumerators.Family;
 import com.rickstore.enumerators.TradeMark;
 import com.rickstore.enumerators.Type;
 import com.rickstore.enumerators.Wood;
@@ -11,7 +12,7 @@ public class StringInstrument extends Instrument {
     protected final int numStrings;
 
     public StringInstrument(long serial, float price, TradeMark tradeMark, Type instrumentType, Wood backWood, Wood topWood, int numStrings) {
-        super(serial, price, tradeMark, "Corda", instrumentType);
+        super(serial, price, tradeMark, Family.String, instrumentType);
         this.backWood = backWood;
         this.topWood = topWood;
         this.numStrings = numStrings;
@@ -27,5 +28,9 @@ public class StringInstrument extends Instrument {
 
     public int getNumStrings() {
         return numStrings;
+    }
+
+    public boolean matchWood(Wood wood){
+        return getBackWood().equals(wood) || getTopWood().equals(wood);
     }
 }

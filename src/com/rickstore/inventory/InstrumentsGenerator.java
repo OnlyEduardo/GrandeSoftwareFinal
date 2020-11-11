@@ -6,6 +6,7 @@ import com.rickstore.enumerators.Type;
 import com.rickstore.enumerators.Wood;
 import com.rickstore.instruments.*;
 import com.rickstore.specs.Instrument;
+import com.rickstore.util.ConsoleColors;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class InstrumentsGenerator {
 
     static {
         try {
-            List<Class<?>> classes = getClassesForPackage("com.rickstore.instruments");
+            List<Class<?>> classes = getClassesForPackage();
 
             for(Class<?> clazz: classes){
                 //noinspection unchecked
@@ -38,14 +39,19 @@ public class InstrumentsGenerator {
 
     public static void getInstrumentsToGenerate(){
         System.out.println("Quantos instrumentos você quer gerar para teste ?");
-        System.out.println("Recomendado mínimo de 10 e no máximo 100000, porém qualquer valor positivo é válido.");
+
+        System.out.println("Recomendado mínimo de " +
+                ConsoleColors.RED_BACKGROUND + "10" + ConsoleColors.RESET +
+                " e no máximo "+
+                ConsoleColors.RED_BACKGROUND + "100000" + ConsoleColors.RESET +
+                ", porém qualquer valor positivo é válido.");
 
         int valueToGen = 0;
         boolean niceNumber = false;
 
         while (!niceNumber){
             Scanner scanner = new Scanner(System.in);
-            System.out.print("> ");
+            System.out.print(ConsoleColors.GREEN + "> " + ConsoleColors.RESET);
 
             try {
                 valueToGen = scanner.nextInt();
@@ -73,7 +79,7 @@ public class InstrumentsGenerator {
         int i = 0;
         int j = 0;
 
-        List<Instrument> instrumentsList = new ArrayList<Instrument>();
+        List<Instrument> instrumentsList = new ArrayList<>();
 
         while ( i < quantityToGenerate) {
 
@@ -87,7 +93,7 @@ public class InstrumentsGenerator {
                 case "Flute":
                     if(new Random().nextFloat() > 0.5f){
                         instrumentsList.add(new Flute(serial, price, TradeMark.getRandom(),
-                                Type.getRandom(), Wood.NONE, Metal.getRandom(), 7));
+                                Type.getRandom(), Wood.Nenhum, Metal.getRandom(), 7));
                     }
                     else {
                         instrumentsList.add(new Flute(serial, price, TradeMark.getRandom(),
@@ -122,7 +128,6 @@ public class InstrumentsGenerator {
         }
 
         Inventory.allInstruments.addAll(instrumentsList);
-        System.out.println("Foram gerados " + quantityToGenerate + " instrumentos.");
     }
 
     private static float generateNewPrice(){
@@ -154,7 +159,7 @@ public class InstrumentsGenerator {
         }
     }
 
-    private static void checkJarFile(JarURLConnection connection, String pckgname, ArrayList<Class<?>> classes) throws ClassNotFoundException, IOException {
+    private static void checkJarFile(JarURLConnection connection, ArrayList<Class<?>> classes) throws ClassNotFoundException, IOException {
         final JarFile jarFile = connection.getJarFile();
         final Enumeration<JarEntry> entries = jarFile.entries();
         String name;
@@ -166,7 +171,7 @@ public class InstrumentsGenerator {
             if (name.contains(".class")) {
                 name = name.substring(0, name.length() - 6).replace('/', '.');
 
-                if (name.contains(pckgname)) {
+                if (name.contains("com.rickstore.instruments")) {
                     classes.add(Class.forName(name));
                 }
             }
@@ -174,14 +179,14 @@ public class InstrumentsGenerator {
 
     }
 
-    private static ArrayList<Class<?>> getClassesForPackage(String pckgname) throws ClassNotFoundException {
+    private static ArrayList<Class<?>> getClassesForPackage() throws ClassNotFoundException {
 
         ArrayList<Class<?>> classes = new ArrayList<>();
 
         try {
 
             final ClassLoader cld = Thread.currentThread().getContextClassLoader();
-            final Enumeration<URL> resources = cld.getResources(pckgname.replace('.', '/'));
+            final Enumeration<URL> resources = cld.getResources("com.rickstore.instruments".replace('.', '/'));
 
             URLConnection connection;
 
@@ -190,30 +195,30 @@ public class InstrumentsGenerator {
                     connection = url.openConnection();
 
                     if (connection instanceof JarURLConnection) {
-                        checkJarFile((JarURLConnection) connection, pckgname,
+                        checkJarFile((JarURLConnection) connection,
                                 classes);
                     } else if (connection != null) {
                         checkDirectory(new File(URLDecoder.decode(url.getPath(), StandardCharsets.UTF_8)),
-                                pckgname, classes);
+                                "com.rickstore.instruments", classes);
                     } else
-                        throw new ClassNotFoundException(pckgname + " ("
+                        throw new ClassNotFoundException("com.rickstore.instruments" + " ("
                                 + url.getPath()
                                 + ") does not appear to be a valid package");
                 } catch (final IOException ioex) {
                     throw new ClassNotFoundException(
                             "IOException was thrown when trying to get all resources for "
-                                    + pckgname, ioex);
+                                    + "com.rickstore.instruments", ioex);
                 }
             }
         } catch (final NullPointerException ex) {
             throw new ClassNotFoundException(
-                    pckgname
+                    "com.rickstore.instruments"
                             + " does not appear to be a valid package (Null pointer exception)",
                     ex);
         } catch (final IOException ioex) {
             throw new ClassNotFoundException(
                     "IOException was thrown when trying to get all resources for "
-                            + pckgname, ioex);
+                            + "com.rickstore.instruments", ioex);
         }
 
         return classes;

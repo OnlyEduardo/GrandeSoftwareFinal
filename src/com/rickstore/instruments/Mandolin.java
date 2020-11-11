@@ -18,6 +18,6 @@ public class Mandolin extends StringInstrument {
         return String.format("Bandolin %s %s." +
                     "\nBackwood: %s" +
                     "\nTopwood: %s" +
-                    "\nPreço: %s", iType, tradeMark, backWood, topWood, formatter.format(price));
+                    "\nPreço: R$%s", iType, tradeMark, backWood, topWood, formatter.format(price));
     }
 }

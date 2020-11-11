@@ -15,9 +15,9 @@ public class Guitar extends StringInstrument {
     public String toString() {
         String iName = instrumentType.equals(Type.Electric) ? "Guitarra" : "Violão";
 
-        return String.format(" %s %s, %d cordas." +
+        return String.format("%s %s, %d cordas." +
                 "\nBackwood: %s" +
                 "\nTopwood: %s" +
-                "\nPreço: %s", iName, tradeMark, numStrings, backWood, topWood, formatter.format(price));
+                "\nPreço: R$%s", iName, tradeMark, numStrings, backWood, topWood, formatter.format(price));
     }
 }

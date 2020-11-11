@@ -1,4 +1,4 @@
-package com.rickstore.main;
+package com.rickstore.util;
 
 public class ConsoleColors {
     // Reset
