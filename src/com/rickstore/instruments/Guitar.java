@@ -18,6 +18,6 @@ public class Guitar extends StringInstrument {
         return String.format("%s %s, %d cordas." +
                 "\nBackwood: %s" +
                 "\nTopwood: %s" +
-                "\nPreço: R$%s", iName, tradeMark, numStrings, backWood, topWood, formatter.format(price));
+                "\nPreço: R$%s", iName, tradeMark, getNumStrings(), backWood, topWood, formatter.format(price));
     }
 }
