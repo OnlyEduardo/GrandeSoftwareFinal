@@ -13,12 +13,11 @@ public class Guitar extends StringInstrument {
 
     @Override
     public String toString() {
-        var iName = instrumentType.equals(Type.Electric) ? "Guitarra" : "Violão";
+        String iName = instrumentType.equals(Type.Electric) ? "Guitarra" : "Violão";
 
-        return String.format("""
-                %s %s, %d cordas.
-                Backwood: %s
-                Topwood: %s
-                Preço: %s""", iName, tradeMark, numStrings, backWood, topWood, formatter.format(price));
+        return String.format(" %s %s, %d cordas." +
+                "\nBackwood: %s" +
+                "\nTopwood: %s" +
+                "\nPreço: %s", iName, tradeMark, numStrings, backWood, topWood, formatter.format(price));
     }
 }

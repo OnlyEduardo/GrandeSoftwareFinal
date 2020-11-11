@@ -2,15 +2,14 @@ package com.rickstore.main;
 
 import com.rickstore.inventory.InstrumentsGenerator;
 
-import java.io.Console;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException {
 
-        var isRunning = true;
+        boolean isRunning = true;
 
         InstrumentsGenerator.getInstrumentsToGenerate();
         Thread.sleep(3000);
@@ -21,11 +20,11 @@ public class Main {
         System.out.println("Digite '#comandos'");
 
         while (isRunning){
-            var scan = new Scanner(System.in);
+            Scanner scan = new Scanner(System.in);
 
             // Get input
             System.out.print("> ");
-            var input = scan.next();
+            String input = scan.next();
 
             checkCommands(input);
 

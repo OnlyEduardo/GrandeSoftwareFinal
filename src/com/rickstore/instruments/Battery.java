@@ -14,11 +14,10 @@ public class Battery extends PercussionInstrument {
 
     @Override
     public String toString() {
-        return String.format("""
-                Flauta %s.\s
-                bodyWood: %s
-                bodyMetal: %s
-                Preço: %s""", tradeMark, bodyWood, bodyMetal, formatter.format(price));
+        return "Flauta " + tradeMark + "." +
+                "\nbodyWood: " + bodyWood +
+                "\nbodyMetal: " + bodyMetal +
+                "\nPreço: " + formatter.format(price);
     }
 
 }

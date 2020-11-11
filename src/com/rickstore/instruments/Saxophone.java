@@ -14,9 +14,8 @@ public class Saxophone extends WindInstrument {
 
     @Override
     public String toString() {
-        return String.format("""
-                Saxofone %s, %d entradas.\s
-                Material: %s
-                Preço: %s""", tradeMark, numRoles, metalPart, formatter.format(price));
+        return String.format("Saxofone %s, %d entradas." +
+                        "\nMaterial: %s" +
+                        "\nPreço: %s", tradeMark, numRoles, metalPart, formatter.format(price));
     }
 }

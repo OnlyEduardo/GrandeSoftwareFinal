@@ -25,9 +25,9 @@ public class InstrumentsGenerator {
 
     static {
         try {
-            var classes = getClassesForPackage("com.rickstore.instruments");
+            List<Class<?>> classes = getClassesForPackage("com.rickstore.instruments");
 
-            for(var clazz: classes){
+            for(Class<?> clazz: classes){
                 //noinspection unchecked
                 instrumentsType.add((Class<? extends Instrument>) clazz);
             }
@@ -67,13 +67,13 @@ public class InstrumentsGenerator {
     }
 
     private static void generate(){
-        var serial = 1L;
-        var price = generateNewPrice();
+        long serial = 1L;
+        float price = generateNewPrice();
 
         int i = 0;
         int j = 0;
 
-        var instrumentsList = new ArrayList<Instrument>();
+        List<Instrument> instrumentsList = new ArrayList<Instrument>();
 
         while ( i < quantityToGenerate) {
 
@@ -179,10 +179,9 @@ public class InstrumentsGenerator {
         ArrayList<Class<?>> classes = new ArrayList<>();
 
         try {
-            final ClassLoader cld = Thread.currentThread().getContextClassLoader();
 
-            final Enumeration<URL> resources = cld.getResources(pckgname
-                    .replace('.', '/'));
+            final ClassLoader cld = Thread.currentThread().getContextClassLoader();
+            final Enumeration<URL> resources = cld.getResources(pckgname.replace('.', '/'));
 
             URLConnection connection;
 
@@ -194,8 +193,8 @@ public class InstrumentsGenerator {
                         checkJarFile((JarURLConnection) connection, pckgname,
                                 classes);
                     } else if (connection != null) {
-                        checkDirectory(
-                                new File(URLDecoder.decode(url.getPath(), StandardCharsets.UTF_8)), pckgname, classes);
+                        checkDirectory(new File(URLDecoder.decode(url.getPath(), StandardCharsets.UTF_8)),
+                                pckgname, classes);
                     } else
                         throw new ClassNotFoundException(pckgname + " ("
                                 + url.getPath()

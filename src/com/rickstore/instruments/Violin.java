@@ -13,12 +13,11 @@ public class Violin extends StringInstrument {
 
     @Override
     public String toString() {
-        var iType = instrumentType.equals(Type.Electric) ? "elétrico" : "";
+        String iType = instrumentType.equals(Type.Electric) ? "elétrico" : "";
 
-        return String.format("""
-                Violino %s %s.
-                Backwood: %s
-                Topwood: %s
-                Preço: %s""", iType, tradeMark, backWood, topWood, formatter.format(price));
+        return String.format("Violino %s %s." +
+                        "\nBackwood: %s" +
+                "\nTopwood: %s" +
+                "\nPreço: %s", iType, tradeMark, backWood, topWood, formatter.format(price));
     }
 }
